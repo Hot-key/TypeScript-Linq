@@ -1,9 +1,12 @@
 import { IEnumerator } from "../DataType/IEnumerator";
 import { IEnumerable } from "../DataType/IEnumerable";
+import { Enumerable } from "../DataType/Enumerable";
 import { SelectEnumerableIterator } from "./SelectEnumerableIterator";
 
-export abstract class NewIterator<TSource> implements IEnumerator<TSource>, IEnumerable<TSource> {
-  constructor() {}
+export abstract class NewIterator<TSource> extends Enumerable implements IEnumerator<TSource>, IEnumerable<TSource> {
+  constructor() {
+    super();
+  }
 
   public Current: TSource;
 
