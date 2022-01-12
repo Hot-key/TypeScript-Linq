@@ -5,20 +5,25 @@ import "./Linq/Linq";
 function* Fibonacci() {
   let current = 1;
   let previous = 0;
-
-  while (previous < 100) {
+  while (true){
     yield current;
-
     let temp = previous;
     previous = current;
     current += temp;
   }
 }
 
-var enumerable = new GeneratorEnumerable(Fibonacci);
+let enumerable = new GeneratorEnumerable(Fibonacci);
 
-var enumerable2 = enumerable.Select(x => x + 1).Where(x => x > 10);
+let newEnumerable = enumerable.Select(x => x * 2).Take(5);
 
-for (let a of enumerable2) {
-  console.log(a);
+for(let i of newEnumerable) {
+  console.log(i);
+}
+console.log("-------------------------");
+
+let newEnumerable2 = enumerable.Take(10).Where(x => x > 10);
+
+for(let i of newEnumerable2) {
+  console.log(i);
 }
